@@ -1,0 +1,9 @@
+---
+pagetitle: "Resume"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+![](/Users/alliehacker/Desktop/Bren/Winter_2021/Advanced Data/personal_website/Hacker_Allison_Resume_Jan_2021.jpg)

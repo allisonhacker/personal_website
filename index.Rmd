@@ -13,6 +13,4 @@ output:
   postcards::jolla
 ---
  
-I am a classically trained data scientist living in the San Francisco Bay Area. 
-Currently I work on the Oculus team at Facebook. I love talking about baseball, 
-true crime podcasts, and causal inference.
+I am an environmental scientist interested in watershed management and forest sustainability in the western United States. I am a currently a graduate student at the Bren School of Environmental Science and Management at UC Santa Barbara. I love trail running, backpacking, and playing cribbage.

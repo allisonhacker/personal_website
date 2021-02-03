@@ -1,10 +1,39 @@
 ---
-title: "About this site"
+title: "About Me"
 description: |
   Some additional details about the website
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
-```
 
+library(tidyverse)
+```
+![](/Users/alliehacker/Desktop/Bren/Winter_2021/Advanced Data/personal_website/Hacker_Allison_Resume_Jan_2021.jpg)
+
+# Interests
+![](/Users/alliehacker/Desktop/Bren/Winter_2021/Advanced Data/personal_website/NF_Cosumnes.jpg)
+
+# Projects
+
+## Forests to Faucets
+![](/Users/alliehacker/Desktop/Bren/Winter_2021/Advanced Data/personal_website/ENF.jpg)
+Wildfire threatens river ecosystems and clean water supply by increasing erosion and sediment delivery to rivers and streams.Prescribed fire can protect river ecosystems and clean water supply by reducing the severity of future wildfires. Forests to Faucets aims to help land and water managers strategically locate their fuels reduction activities by identifying areas where fuels treatment will have the biggest impact. 
+
+**Project Objectives:**
+
+* Develop a methodology to prioritize locations for prescribed fire to maximize benefits to river ecosystems and clean water supply in the Sierra Nevada.
+
+* Identify 3-5 priority locations for fuels treatment in the Cosumnes, American, Bear, and Yuba (CABY) region.
+
+* Create white paper to inform forest and water managers about the benefits of targeted fuels management for river health and clean water supply.
+
+## Upper American River Watershed Management Plan
+![](/Users/alliehacker/Desktop/Bren/Winter_2021/Advanced Data/personal_website/Coloma1.jpg)
+
+## Sierra Nevada Meadow Restoration
+![](/Users/alliehacker/Desktop/Bren/Winter_2021/Advanced Data/personal_website/IMG_4207.jpeg)
+## Impacts of Grazing on Aspen Regeneration
+![](/Users/alliehacker/Desktop/Bren/Winter_2021/Advanced Data/personal_website/IMG_4580.jpeg)
+
+Quaking aspen (*Populus tremuloides*) are declining across their geographic range as stands fail to regenerate after disturbance. Interestingly, aspen decline is not occurring uniformly throughout its range and the cause of decline may vary by location. By collecting data on vegetation structure of aspen stands and monitoring herbivore activity in fenced and unfenced stands, I hope to begin to untangle the importance of conifer intrusion and herbivory as drivers of aspen decline in the Sierra Nevada and Great Basin. This research will fill gaps in our knowledge of the state of aspen decline and highlight areas where the problem is most dire. In addition this research will inform the use of fencing and herbivore exclosures to facilitate aspen regeneration and reverse decline.

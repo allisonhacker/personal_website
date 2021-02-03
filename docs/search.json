@@ -2,25 +2,31 @@
   "articles": [
     {
       "path": "about.html",
-      "title": "About this site",
+      "title": "About Me",
       "description": "Some additional details about the website",
       "author": [],
-      "contents": "\n\n\n\n",
-      "last_modified": "2021-01-22T11:25:03-08:00"
+      "contents": "\n\nInterests\n\nProjects\nForests to Faucets\n Wildfire threatens river ecosystems and clean water supply by increasing erosion and sediment delivery to rivers and streams.Prescribed fire can protect river ecosystems and clean water supply by reducing the severity of future wildfires. Forests to Faucets aims to help land and water managers strategically locate their fuels reduction activities by identifying areas where fuels treatment will have the biggest impact.\nProject Objectives:\nDevelop a methodology to prioritize locations for prescribed fire to maximize benefits to river ecosystems and clean water supply in the Sierra Nevada.\nIdentify 3-5 priority locations for fuels treatment in the Cosumnes, American, Bear, and Yuba (CABY) region.\nCreate white paper to inform forest and water managers about the benefits of targeted fuels management for river health and clean water supply.\nUpper American River Watershed Management Plan\n\nSierra Nevada Meadow Restoration\n ## Impacts of Grazing on Aspen Regeneration \nQuaking aspen (Populus tremuloides) are declining across their geographic range as stands fail to regenerate after disturbance. Interestingly, aspen decline is not occurring uniformly throughout its range and the cause of decline may vary by location. By collecting data on vegetation structure of aspen stands and monitoring herbivore activity in fenced and unfenced stands, I hope to begin to untangle the importance of conifer intrusion and herbivory as drivers of aspen decline in the Sierra Nevada and Great Basin. This research will fill gaps in our knowledge of the state of aspen decline and highlight areas where the problem is most dire. In addition this research will inform the use of fencing and herbivore exclosures to facilitate aspen regeneration and reverse decline.\n\n\n\n",
+      "last_modified": "2021-02-02T17:22:51-08:00"
     },
     {
       "path": "blog.html",
       "title": "Blog",
       "author": [],
       "contents": "\n\n\n\n",
-      "last_modified": "2021-01-22T11:25:05-08:00"
+      "last_modified": "2021-02-02T17:22:52-08:00"
     },
     {
       "path": "index.html",
       "title": "Allison Hacker",
       "author": [],
-      "contents": "\n\n          \n      \n      my_website\n      \n      \n      Home\n      About\n      Blog\n      ☰\n      \n      \n      \n        \n          \n            Allison Hacker\n          \n          \n            \n              I am a classically trained data scientist living in the San Francisco Bay Area. Currently I work on the Oculus team at Facebook. I love talking about baseball, true crime podcasts, and causal inference.\n            \n            \n              I am a classically trained data scientist living in the San Francisco Bay Area. Currently I work on the Oculus team at Facebook. I love talking about baseball, true crime podcasts, and causal inference.\n            \n          \n\n          \n            \n              \n                  \n                    \n                      LinkedIn\n                    \n                  \n                \n                                \n                  \n                    \n                      GitHub\n                    \n                  \n                \n                                \n                  \n                    \n                      Email\n                    \n                  \n                \n                              \n          \n\n          \n            \n              \n                                \n                  \n                    LinkedIn\n                  \n                \n                                \n                  \n                    GitHub\n                  \n                \n                                \n                  \n                    Email\n                  \n                \n                              \n            \n          \n        \n      \n    \n\n    \n    \n    ",
-      "last_modified": "2021-01-22T11:25:06-08:00"
+      "contents": "\n\n          \n      \n      my_website\n      \n      \n      Home\n      About\n      Resume\n      Blog\n      ☰\n      \n      \n      \n        \n          \n            Allison Hacker\n          \n          \n            \n              I am an environmental scientist interested in watershed management and forest sustainability in the western United States. I am a currently a graduate student at the Bren School of Environmental Science and Management at UC Santa Barbara. I love trail running, backpacking, and playing cribbage.\n            \n            \n              I am an environmental scientist interested in watershed management and forest sustainability in the western United States. I am a currently a graduate student at the Bren School of Environmental Science and Management at UC Santa Barbara. I love trail running, backpacking, and playing cribbage.\n            \n          \n\n          \n            \n              \n                  \n                    \n                      LinkedIn\n                    \n                  \n                \n                                \n                  \n                    \n                      GitHub\n                    \n                  \n                \n                                \n                  \n                    \n                      Email\n                    \n                  \n                \n                              \n          \n\n          \n            \n              \n                                \n                  \n                    LinkedIn\n                  \n                \n                                \n                  \n                    GitHub\n                  \n                \n                                \n                  \n                    Email\n                  \n                \n                              \n            \n          \n        \n      \n    \n\n    \n    \n    ",
+      "last_modified": "2021-02-02T17:24:47-08:00"
+    },
+    {
+      "path": "resume.html",
+      "author": [],
+      "contents": "\n\n\n\n\n",
+      "last_modified": "2021-02-02T17:35:03-08:00"
     }
   ],
   "collections": ["posts/posts.json"]
