@@ -1,18 +1,15 @@
 ---
 title: "About Me"
-description: |
-  Some additional details about the website
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
-
-library(tidyverse)
 ```
-![](/Users/alliehacker/Desktop/Bren/Winter_2021/Advanced Data/personal_website/Hacker_Allison_Resume_Jan_2021.jpg)
-
 # Interests
 ![](/Users/alliehacker/Desktop/Bren/Winter_2021/Advanced Data/personal_website/NF_Cosumnes.jpg)
+My interest in water resources management developed from a Quaker studies class I took during my final semester of college, which focused on community service and social responsibility. The course challenged me to incorporate service into my daily life by pursuing a career at the intersection of a community need and my interests and skills. During my time in college, California’s record drought followed by the wettest year in decades highlighted the need for sustainable water management. Against this backdrop, a career in sustainable water management seemed like a natural fit for my scientific training, interest in environmental science, and abiding love for California.
+
+I am interested in identifying intersections between water management challenges and finding solutions that address multiple issues at once. Building on the concepts I have learned through my river restoration experience, I am particularly interested in using California’s natural water infrastructure, such as groundwater reservoirs, floodplains, and forests, as intersectional solutions to water management challenges. For example, increasing the recharge of groundwater reservoirs addresses California’s growing need for water storage as well as groundwater overdraft. Expanding and restoring floodplains improves flood protection for local communities while also improving water quality and providing valuable habitat for fish and wildlife. Nature-based solutions tend to be cost-efficient and have the potential to increase the resiliency of California’s water system, while providing multiple benefits to local communities.
 
 # Projects
 
@@ -28,12 +25,17 @@ Wildfire threatens river ecosystems and clean water supply by increasing erosion
 
 * Create white paper to inform forest and water managers about the benefits of targeted fuels management for river health and clean water supply.
 
+Click [here](https://www.forests2faucets.com/) to learn more!
+
 ## Upper American River Watershed Management Plan
 ![](/Users/alliehacker/Desktop/Bren/Winter_2021/Advanced Data/personal_website/Coloma1.jpg)
 
 ## Sierra Nevada Meadow Restoration
+
 ![](/Users/alliehacker/Desktop/Bren/Winter_2021/Advanced Data/personal_website/IMG_4207.jpeg)
+
 ## Impacts of Grazing on Aspen Regeneration
+
 ![](/Users/alliehacker/Desktop/Bren/Winter_2021/Advanced Data/personal_website/IMG_4580.jpeg)
 
 Quaking aspen (*Populus tremuloides*) are declining across their geographic range as stands fail to regenerate after disturbance. Interestingly, aspen decline is not occurring uniformly throughout its range and the cause of decline may vary by location. By collecting data on vegetation structure of aspen stands and monitoring herbivore activity in fenced and unfenced stands, I hope to begin to untangle the importance of conifer intrusion and herbivory as drivers of aspen decline in the Sierra Nevada and Great Basin. This research will fill gaps in our knowledge of the state of aspen decline and highlight areas where the problem is most dire. In addition this research will inform the use of fencing and herbivore exclosures to facilitate aspen regeneration and reverse decline.
