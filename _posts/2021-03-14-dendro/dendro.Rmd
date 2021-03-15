@@ -1,0 +1,69 @@
+---
+title: "Hierarchical Clustering"
+output:
+  distill::distill_article:
+    self_contained: false
+    code_folding: hide
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+
+library(tidyverse)
+library(janitor)
+library(NbClust)
+library(cluster)
+library(factoextra)
+library(dendextend)
+library(ggdendro)
+```
+
+### Introduction
+
+Stream water chemistry measurements have been taken in watersheds in the Santa Barbara area on a weekly or biweekly basis since 2000 as part of the Santa Barbara Coastal LTER. Parameters measured include dissolved nitrogen, soluble reactive phosphorus, particulate organic carbon, total suspended sediments, and conductivity. Only data from registered sites was included in this analysis.
+
+### Dendrogram
+```{r}
+# read in data, change -999 values to NA
+stream_chem <- read_csv("sbc_lter_registered_stream_chemistry.csv") %>% 
+  mutate(across(where(is.double), ~na_if(., -999.0)))
+
+# calculate mean values for each site
+site_means <- stream_chem %>% 
+  group_by(site_code) %>% 
+  summarize(across(nh4_uM:spec_cond_uSpercm, mean, na.rm = TRUE))
+
+# scale values
+site_means_scaled <- site_means %>% 
+  select(2:11) %>% 
+  scale()
+
+# make site code the row name
+rownames(site_means_scaled) <- site_means$site_code
+
+# calculate Euclidean distances
+euc_distance <- dist(site_means_scaled, method = "euclidean")
+
+# Hierarchical clustering with complete linkage
+hc_complete <- hclust(euc_distance, method = "complete" )
+
+# make dendrogram in ggplot
+ggdendrogram(hc_complete, 
+             rotate = TRUE, color = "navy") +
+  theme_minimal() +
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        axis.text.x = element_blank())+
+  scale_y_continuous(expand = c(0,0))+
+  labs(x = "Site", y = "")
+```
+
+**Figure 1. Stream chemistry dendrogram.** Hierarchical cluster analysis with complete linkages was performed for stream monitoring sites in the Santa Barbara area using site mean measurements of various water chemistry parameters. Site DV01 is the least similar to other sites while sites MC00 and AB00 are the most similar.
+
+
+
+
+**Data citation:** Santa Barbara Coastal LTER and J. Melack. 2019. SBC LTER: Land: Stream chemistry in the Santa Barbara Coastal drainage area, ongoing since 2000 ver 16. Environmental Data Initiative. 
+
+

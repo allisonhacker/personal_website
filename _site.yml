@@ -1,5 +1,5 @@
 name: "."
-title: "my_website"
+title: "Allison Hacker"
 description: |
   my_website
 output_dir: "docs"
@@ -11,7 +11,7 @@ navbar:
       href: about.html
     - text: "Resume"
       href: resume.html
-    - text: "Blog"
+    - text: "Projects"
       href: blog.html
 output: distill::distill_article
 theme: postcards.css

@@ -1,0 +1,80 @@
+---
+title: "Mapping with rasters"
+output:
+  distill::distill_article:
+    self_contained: false
+    code_folding: true
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message =FALSE)
+
+library(raster)
+library(tidyverse)
+library(here)
+library(sf)
+library(fasterize)
+library(rnaturalearth)
+library(viridis)
+library(here)
+
+countries <- ne_download(scale = 50, type = "countries", category = "cultural", returnclass = "sf") 
+```
+
+```{r, cache=TRUE}
+# Step 1. Read in and stack rasters
+raster_list <- list.files(path = here("_posts","2021-03-14-rasters", "ca_cetaceans"), pattern='.tif', all.files=TRUE, full.names=TRUE)
+
+cetaceans_stack<- raster_list %>% 
+  stack()
+##############################################################
+
+# Step 2. Reclassify and sum rasters
+
+# make matrix for reclassifying
+reclass_vector <- c(0, 0.6, 0, 0.6, 1, 1)
+reclass_matrix <- matrix(reclass_vector, nrow = 2, byrow = TRUE)
+
+# reclassify by matrix
+cetaceans_reclass <- reclassify(cetaceans_stack, reclass_matrix, include.lowest = TRUE)
+
+# sum reclassified rasters
+cetaceans_richness <- raster::calc(cetaceans_reclass, fun = sum)
+
+# plot(cetaceans_richness)
+
+##############################################################
+
+# Step 3. Make map in ggplot
+
+cetaceans_df <- rasterToPoints(cetaceans_richness) %>% 
+  as.data.frame()
+
+coast <- countries %>% 
+  filter(SUBUNIT %in% c("United States", "Mexico"))
+
+ggplot()+
+  geom_raster(cetaceans_df, mapping = aes(x = x, y = y, fill = layer))+
+  scale_fill_viridis(option = "magma", direction = -1, begin = 0.2)+
+  labs(fill = "Species\nRichness")+
+  geom_sf(data = coast, fill = "grey")+
+  coord_sf(xlim = c(-123, -115), ylim = c(31.5, 35.6))+
+  theme_void()+
+  theme(legend.position = c(0.1, 0.3),
+        legend.title = element_text(size = 14),
+        legend.text = element_text(size = 10))+
+  annotate("text", label = "California", x = -117, y = 34.9, size = 5)+
+  annotate("text", label = "Mexico", x = -115.9, y = 32.1, size = 5)
+  
+  
+```
+
+**Figure 1. Cetacean species richness off the southern California coast.** Species richness (number of species present) is indicated by color (purple = high, yellow = low). A species was considered present in a cell if its probability of occurence was greater than 60%. Species richness tends to be lower in areas close to the mainland.
+
+
+
+
+
+
+

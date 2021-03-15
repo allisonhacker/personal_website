@@ -1,0 +1,18 @@
+---
+title: "Impacts of Grazing on Aspen Regeneration"
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r, fig.align='center', out.width='100%'}
+knitr::include_graphics("/Users/alliehacker/Desktop/Bren/Winter_2021/Advanced Data/personal_website/_posts/2021-03-14-aspen/IMG_4580.jpeg")
+```
+
+
+Quaking aspen (*Populus tremuloides*) are declining across their geographic range as stands fail to regenerate after disturbance. Interestingly, aspen decline is not occurring uniformly throughout its range and the cause of decline may vary by location. By collecting data on vegetation structure of aspen stands and monitoring herbivore activity in fenced and unfenced stands, I hope to begin to untangle the importance of conifer intrusion and herbivory as drivers of aspen decline in the Sierra Nevada and Great Basin. This research will fill gaps in our knowledge of the state of aspen decline and highlight areas where the problem is most dire. In addition this research will inform the use of fencing and herbivore exclosures to facilitate aspen regeneration and reverse decline.

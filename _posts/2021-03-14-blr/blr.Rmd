@@ -1,0 +1,147 @@
+---
+title: "Binomial Logistic Regression with Palmettos"
+output:
+  distill::distill_article:
+    self_contained: false
+    code_folding: true
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+library(tidyverse)
+library(corrplot)
+library(GGally)
+library(forcats)
+library(broom)
+library(jtools)
+library(kableExtra)
+library(janitor)
+library(tibble)
+library(here)
+```
+
+## Differences in canopy characteristics of palmetto dates *Sabal etonia* and *Serenoa repens*
+
+```{r, warning=FALSE, message=FALSE}
+# read in data
+
+palmetto <- read_csv(here("_posts", "2021-03-14-blr","palmetto.csv")) %>% 
+  select(species, height, length, width, green_lvs) %>% 
+  drop_na() %>% 
+  mutate(species = as.character(species)) %>% 
+  mutate(species = case_when(species == "1"~ "Serenoa repens",
+                              species == "2" ~ "Sabal etonia"))
+
+# explore correlations
+# ggpairs(palmetto, ggplot2::aes(color = species))
+```
+
+
+```{r, warning=FALSE, message=FALSE}
+# Violin plot of green leaves per tree
+
+ggplot(palmetto, aes(x = species, y = green_lvs, fill = species))+
+  geom_violin(show.legend = FALSE)+
+  theme_minimal()+
+  labs(x = "Species", y = "Number of green leaves")
+```
+
+**Figure 1. Green leaves on palmetto date trees by species.** *Sabal etonia* (red) tends to have fewer green leaves than *Serenoa repens* (teal).
+
+
+**Key takeaway:** There is less variance in the of number of green leaves per tree for *Sabal etonia* than for *Serenoa repens*. In addition, most *Sabal etonia* in the sample have 3-5 green leaves, while 6-8 green leaves is more common for *Serenoa repens* trees.
+
+```{r, warning=FALSE, message=FALSE}
+# Density plot of canopy length
+
+ggplot(palmetto, aes(x = length, fill = species, color = species))+
+  geom_density(alpha=.4)+
+  theme_minimal()+
+  labs(x = "Canopy length (cm)", y = "Density", color = "Species", fill = "Species")+
+  theme(legend.position = c(0.8,0.8))
+```
+
+**Figure 2. Canopy length of palmetto date trees by species.** Canopy lengths of *Sabal etonia* (red) and *Serenoa repens* (teal) are normally distributed.
+
+
+
+**Key takeaway:** While the distributions of canopy lengths of *Sabal etonia* and *Serenoa repens* are similar, *Sabal etonia* trees tend to have slightly longer canopies than *Serenoa repens*.
+
+
+```{r, warning=FALSE, message=FALSE}
+# Canopy width and height scatter plot
+
+ggplot(palmetto, aes(y = height, x = width, color = species))+
+  geom_point(size = 0.2, show.legend = FALSE)+
+  theme_minimal()+
+  labs(y = "Canopy height (cm)", x = "Canopy width (cm)")+
+  facet_wrap(~species)
+```
+
+**Figure 3. Canopy height and width of palmetto date trees by species.** Canopy width and height of *Sabal etonia* (red) and *Serenoa repens* (teal) are positively correlated.
+
+
+
+**Key takeaway:** Distributions of canopy height and width are similar for *Sabal etonia* and *Serenoa repens*
+
+
+
+## Binary logistic regression
+
+**Table 1. Binary logistic regression model results.**
+```{r, warning=FALSE, message=FALSE}
+# binary logistic regression
+
+palmetto_factor <- palmetto %>% 
+  mutate(species = as_factor(species))
+
+palmetto_blr <- glm(species ~ height + length + width + green_lvs, 
+                            data = palmetto_factor,
+                            family = "binomial")
+
+# make table of model results
+
+blr_tidy <- broom::tidy(palmetto_blr)
+
+blr_tidy %>% 
+  kbl(col.names = c('', 'Estimate', 'Std Error', 'Statistic', 'P value'), digits = 3) %>% 
+  kable_paper("hover", full_width = F)
+```
+
+Number of green leaves is the strongest predictor variable. All predictor variables are significant.
+
+## Evaluating the model
+
+**Table 2. Model predictions.** 
+```{r, warning=FALSE, message=FALSE}
+# predict species
+blr_fitted <- palmetto_blr %>% 
+  broom::augment(type.predict = "response") %>% 
+  mutate(predicted_species = case_when(.fitted > 0.5 ~ "Sabal etonia",
+                              .fitted < 0.5  ~ "Serenoa repens")) %>% 
+  mutate(success = case_when(species == predicted_species ~ 1,
+                            species != predicted_species ~ 0))
+
+# Summarize predictions
+palmetto_blr_summary <- blr_fitted %>% 
+  group_by(species) %>% 
+  summarize(correct = sum(success),
+            incorrect = n()-sum(success),
+            percent_correct = sum(success)/n()*100) %>% 
+  rename("Number Correct" = correct, 
+         "Number Incorrect" = incorrect,
+         "Percent Correct" = percent_correct)
+  
+# Make table
+palmetto_blr_summary %>% 
+  t() %>% 
+  row_to_names(1) %>% 
+  kable(digits = 2) %>% 
+  kable_paper("hover", full_width = F)
+
+```
+
+The model correctly classifies over 90% of plants of both species. The model is slightly better at classifying *Sabal etonia* (92.6% correct) than *Serenoa repens* (90.8% correct).
+

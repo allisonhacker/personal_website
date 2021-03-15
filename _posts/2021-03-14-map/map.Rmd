@@ -1,0 +1,69 @@
+---
+title: "Mapping oil spills in California"
+output:
+  distill::distill_article:
+    self_contained: false
+    code_folding: true
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message=FALSE)
+
+library(tidyverse)
+library(here)
+library(janitor)
+library(sf)
+library(tmap)
+library(expss)
+```
+
+```{r}
+# read in spatial data
+counties <- read_sf(here("_posts", "2021-03-14-map", "ca_counties", layer = "CA_Counties_TIGER2016.shp")) %>% 
+  clean_names()
+
+oil_spills <- read_sf(here("_posts", "2021-03-14-map","Oil_Spill_Incidents", layer = "Oil_Spill_Incident_Tracking_%5Bds394%5D.shp")) %>% 
+  clean_names()
+
+# check crs
+# st_crs(counties) # WGS 84
+# st_crs(oil_spills) # WGS 84
+
+```
+
+## Oil spill locations
+```{r, layout="l-body-outset"}
+# set to interactive viewing mode
+tmap_mode("view")
+
+# make exploratory map
+tm_shape(counties)+
+  tm_borders("black")+
+  tm_shape(oil_spills)+
+  tm_dots("red")
+```
+
+**Figure 1. California oil spills (2008).** Oil spills that occured in California in 2008 are shown (red points, n = 3,237). Data source: [CA DFW Oil Spill Incident Tracking](https://gis.data.ca.gov/datasets/7464e3d6f4924b50ad06e5a553d71086_0/data)
+
+
+## Oil spills by county
+```{r, layout="l-body-outset"}
+# spatial join counties with spills and summarize number of spills per county
+county_spills <- st_join(counties, oil_spills) %>% 
+  group_by(name) %>% 
+  summarize(spill_count = count_if("Inland", inlandmari))
+
+# make static chloropleth map of  
+ggplot()+
+  geom_sf(county_spills, mapping = aes(fill = spill_count))+
+  theme_void()+
+  scale_fill_steps(low = "white",
+                    high = "#033296",
+                    n.breaks = 6,
+                    name = "Number of inland\noil spills")+
+  theme(legend.position = c(0.85, 0.75))
+```
+
+**Figure 2. Oil spills by county (2008).** The number of inland oil spills that occurred in each county in California in 2008 is indicated by color, with darker colors indicating more spills. Data source: [CA DFW Oil Spill Incident Tracking](https://gis.data.ca.gov/datasets/7464e3d6f4924b50ad06e5a553d71086_0/data)
+

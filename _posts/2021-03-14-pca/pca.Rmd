@@ -1,0 +1,67 @@
+---
+title: "Principle Component Analysis of Country-level Environmental Variables"
+output:
+  distill::distill_article:
+    self_contained: false
+    code_folding: hide
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+
+library(tidyverse)
+library(janitor)
+library(ggfortify)
+library(here)
+```
+
+Data on a variety of environmental variables (e.g. elevation, wind, mean annual rainfall, etc.) was acquired through remote sensing for 243 countries, and country means were calculated at a reduction scale of 10 km for each variable (Data compiled and provided by @zander_venter, using [Google Earth Engine](https://earthengine.google.com/)). Given the large number of variables and observations in the data set, principle component analysis (PCA) was used to visualize multiple variables at once. PCA allows us to explore the variance in the data set as well as identify relationships between variables. For simplicity, only 13 variables were included in this analysis and any countries with incomplete data were excluded.
+
+```{r, results='hide', fig.show='hold'}
+# Read in data, clean names, remove select variables, drop records with NAs, and convert country to row name 
+
+environ <- read_csv(here("_posts","2021-03-14-pca","world_env_vars.csv")) %>% 
+  clean_names() %>%
+  rename(rain_seasonality = rain_seasonailty) %>% 
+   select(-ends_with("_quart"), 
+          -ends_with("seasonality"), 
+          -ends_with("range"), 
+          -accessibility_to_cities, 
+          -isothermality) %>% 
+  drop_na() %>% 
+  remove_rownames %>% 
+  column_to_rownames(var="country")
+  
+
+# Scale data and compute principle components
+environ_pca <- environ %>% 
+  scale() %>% 
+  prcomp()
+
+# Create a biplot 
+autoplot(environ_pca,
+         data = environ,
+         loadings = TRUE,
+         loadings.label = TRUE,
+         loadings.colour = "black",
+         loadings.label.colour = "blue",
+         colour = "grey65",
+         loadings.label.repel = TRUE
+         )+
+  theme_light()
+```
+
+**Principle component analysis for country-level environmental variables.** Variance in  country-level environmental variables is shown by vector length and relationships between variables are indicated by the angle between vectors (0 degrees = positively correlated, 90 degrees = no correlation, 180 degrees = negatively correlated). Points represent individual countries (n = 188). Data source: [Google Earth Engine](https://earthengine.google.com/).
+
+### Conclusions
+
+This PCA biplot indicates:
+
+* Over half (59.74%) of variance in the dataset can be explained by the first two principle components.
+* Variables relating to temperature and rainfall account for more of the variance in the dataset than slope, elevation, wind, cropland cover, or aspect.
+* Variables relating to temperature tend to be positively correlated with one another, but negatively correlated with elevation.
+* Variables relating to rainfall tend to be positively correlated with one another and with tree canopy cover.
+
+
+

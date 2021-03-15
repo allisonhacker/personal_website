@@ -1,0 +1,29 @@
+---
+title: "Forests to Faucets"
+description: |
+  Prioritizing fuel treatments to protect water quality in the central Sierra Nevada
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r, fig.align='center', out.width='100%'}
+knitr::include_graphics("/Users/alliehacker/Desktop/Bren/Winter_2021/Advanced Data/personal_website/_posts/2021-03-14-f2f/ENF.jpg")
+```
+
+Wildfire threatens river ecosystems and clean water supply by increasing erosion and sediment delivery to rivers and streams.Prescribed fire can protect river ecosystems and clean water supply by reducing the severity of future wildfires. Forests to Faucets aims to help land and water managers strategically locate their fuels reduction activities by identifying areas where fuels treatment will have the biggest impact. 
+
+**Project Objectives:**
+
+* Develop a methodology to prioritize locations for prescribed fire to maximize benefits to river ecosystems and clean water supply in the Sierra Nevada.
+
+* Identify 3-5 priority locations for fuels treatment in the Cosumnes, American, Bear, and Yuba (CABY) region.
+
+* Create white paper to inform forest and water managers about the benefits of targeted fuels management for river health and clean water supply.
+
+**Click [here](https://www.forests2faucets.com/) to learn more about the project!**

@@ -1,0 +1,33 @@
+---
+title: "Upper American River Watershed Management Plan"
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r, fig.align='center', out.width='100%'}
+knitr::include_graphics("/Users/alliehacker/Desktop/Bren/Winter_2021/Advanced Data/personal_website/_posts/2021-03-14-americanriver/Coloma1.jpg")
+```
+
+
+### Objectives:
+
+- **Adapt water supply and demand in response to changing climate and population dynamics:** Current water supply and demand dynamics are likely to shift as climate changes increases climate variability and the potential for extreme events. Population growth will put further stress on the water system. Actions that add flexibility and resilience to the water supply and reduce overall demand are needed to ensure reliable water supply in the future.
+
+- **Address legacy mercury contamination:** Mercury is prevalent throughout the Upper American watershed due to historic gold mining in the region, and it is the listed contaminant for all of the impaired water bodies in the watershed. Mercury contamination should be addressed to improve water quality and community health.
+
+- **Improve the health of freshwater ecosystems:** Freshwater ecosystems provide important habitat, recreation, and water supply and water quality benefits. However, they are threatened by the disruption of natural flow regimes, development, and other human interference. Conservation and restoration are needed to protect and revitalize the watershed’s natural water infrastructure.
+
+- **Address urban stormwater issues:** Urban areas make up a small percentage of the land in the Upper American watershed, but contribute a disproportionate amount of the watersheds pollutant load. As the watershed becomes more developed, the volume of urban stormwater is likely to increase. Solutions are needed to reduce water quality issues and localized flooding related to urban runoff.
+
+- **Increase resilience to disturbance:** Wildfire, drought, and floods pose major risks to the water supply and water quality in the upper American watershed. Action should be taken to mitigate potential disasters and increase the resilience of the natural lands within the watershed. 
+
+- **Where possible, identify multi-benefit solutions to water supply and quality challenges:** Solutions that tackle multiple issues make the most efficient and effective use of the limited resources available. Furthermore, multi-benefit projects offer more opportunities for funding and collaboration between groups.
+
+
+
